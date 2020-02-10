@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include "huffman_tree.h"
 
-int main()
+int main(void)
 {
 	FILE* input = fopen("hamlet.txt", "rt");
 	FILE* output = fopen("hamlet.output.bin", "wb");
