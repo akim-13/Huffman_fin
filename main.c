@@ -13,7 +13,7 @@ int main()
 	frequency* freq = read_frequency_from_text(input);
 	huffman_node* tree = make_huffman_tree(freq->chrs, freq->cnts, freq->amount);
 
-	print_huffman_tree(tree);
+	print_huffman_tree(tree); 
 	rewind(input);
 	encode_bin(input, output, freq);
 
