@@ -7,30 +7,30 @@
 
 int main(void)
 {
-	FILE* input = fopen("hamlet.txt", "rt");
-	FILE* output = fopen("hamlet.output.bin", "wb");
+    FILE* input = fopen("dna.txt", "rt");
+    FILE* output = fopen("dna.output.bin", "wb");
 
-	frequency* freq = read_frequency_from_text(input);
-	huffman_node* tree = make_huffman_tree(freq->chrs, freq->cnts, freq->amount);
+    frequency* freq = read_frequency_from_text(input);
+    huffman_node* tree = make_huffman_tree(freq->chrs, freq->cnts, freq->amount);
 
-	print_huffman_tree(tree); 
-	rewind(input);
-	encode_bin(input, output, freq);
+    print_huffman_tree(tree); 
+    rewind(input);
+    encode_bin(input, output, freq);
 
-	free_frequency(freq);
-	free_huffman_tree(tree); 
-	fflush(output); // Errors on big files w/o this function
-	fclose(output); 
-	fclose(input);
+    free_frequency(freq);
+    free_huffman_tree(tree); 
+    fflush(output); // Errors on big files w/o this function
+    fclose(output); 
+    fclose(input);
 
-	FILE* input0 = fopen("hamlet.output.bin", "rb");
-	FILE* output0 = fopen("hamlet.output.bin123.txt", "wt");
+    FILE* input0 = fopen("dna.output.bin", "rb");
+    FILE* output0 = fopen("dna.output.bin.txt", "wt");
 
-	decode_bin(input0, output0);
+    decode_bin(input0, output0);
 
-	fflush(output0); 
-	fclose(output0);
-	fclose(input0);
+    fflush(output0); 
+    fclose(output0);
+    fclose(input0);
 
-	return 0;
+    return 0;
 }
